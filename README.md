@@ -10,13 +10,13 @@
 
 ```dart
 Future<void> _handleIncrementCounterEvent(event, emit) async {
-await Future.delayed(const Duration(seconds: 4));
-emit(state.copyWith(counter: state.counter + 1));
+    await Future.delayed(const Duration(seconds: 4));
+    emit(state.copyWith(counter: state.counter + 1));
 }
 
 Future<void> _handleDecrementCounterEvent(event, emit) async {
-await Future.delayed(const Duration(seconds: 2));
-emit(state.copyWith(counter: state.counter - 1));
+    await Future.delayed(const Duration(seconds: 2));
+    emit(state.copyWith(counter: state.counter - 1));
 }
 ```
 
@@ -72,7 +72,7 @@ on<DecrementCounterEvent>(
 ### CounterEvent
 
 > 이벤트를 하나로 묶어서 처리 (sequential)
-> 4초뒤에 1이 증가되고, 이후 2초뒤에 1이 증가됨
+> 4초뒤에 1이 증가되고, 이후 2초뒤에 1이 증가됨.
 
 ```dart
 on<CounterEvent>(
