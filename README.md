@@ -26,13 +26,13 @@ Future<void> _handleDecrementCounterEvent(event, emit) async {
 
 ```dart
 CounterBloc() : super(CounterState.initial()) {
-on<IncrementCounterEvent>(
-    _handleIncrementCounterEvent,
-);
+    on<IncrementCounterEvent>(
+        _handleIncrementCounterEvent,
+    );
 
-on<DecrementCounterEvent>(
-    _handleDecrementCounterEvent,
-);
+    on<DecrementCounterEvent>(
+        _handleDecrementCounterEvent,
+    );
 }
 ```
 
