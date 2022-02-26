@@ -77,11 +77,11 @@ on<DecrementCounterEvent>(
 ```dart
 on<CounterEvent>(
     (event, emit) async {
-    if (event is IncrementCounterEvent) {
-        await _handleIncrementCounterEvent(event, emit);
-    } else if (event is DecrementCounterEvent) {
-        await _handleDecrementCounterEvent(event, emit);
-    }
+        if (event is IncrementCounterEvent) {
+            await _handleIncrementCounterEvent(event, emit);
+        } else if (event is DecrementCounterEvent) {
+            await _handleDecrementCounterEvent(event, emit);
+        }
     },
     transformer: sequential(),
 );
