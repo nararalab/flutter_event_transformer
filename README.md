@@ -36,6 +36,57 @@ on<DecrementCounterEvent>(
 }
 ```
 
+### transformer(droppable)
+
+> 계속 누르면, 겹치면 무시하고, 수행됨.
+
+```dart
+on<DecrementCounterEvent>(
+    _handleDecrementCounterEvent,
+    transformer: droppable(),
+);
+```
+
+### transformer(restartable)
+
+> 계속 누르면, 겹치면 이전 처리를 무시하고 재시작함.
+
+```dart
+on<DecrementCounterEvent>(
+    _handleDecrementCounterEvent,
+    transformer: restartable(),
+);
+```
+
+### transformer(sequential)
+
+> 계속 누르면, 겹치면, 겹친만큼 순차적으로  딜레이후 1씩 감소함.
+
+```dart
+on<DecrementCounterEvent>(
+    _handleDecrementCounterEvent,
+    transformer: sequential(),
+);
+```
+
+### CounterEvent
+
+> 이벤트를 하나로 묶어서 처리 (sequential)
+> 4초뒤에 1이 증가되고, 이후 2초뒤에 1이 증가됨
+
+```dart
+on<CounterEvent>(
+    (event, emit) async {
+    if (event is IncrementCounterEvent) {
+        await _handleIncrementCounterEvent(event, emit);
+    } else if (event is DecrementCounterEvent) {
+        await _handleDecrementCounterEvent(event, emit);
+    }
+    },
+    transformer: sequential(),
+);
+```
+
 ## Dependencies
 
 ```bash
